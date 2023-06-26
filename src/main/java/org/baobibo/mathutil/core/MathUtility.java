@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package org.baobibo.mathutil.core;
-.
+
 /**
  *
  * @author bibo
@@ -22,17 +22,26 @@ public class MathUtility {
     //ko áp dụng giao thừa cho số >20. Vì 20! vừa đủ khít kiểu long
     //                                          18 con số 0
     //=> 21!: Chửi, ném ra ngoại lệ
-    public static long getFactorial(int n) {     //static: chỉ xài 1 lần rồi thôi(tool, đồ chơi công cụ chơi xong ko cần nhớ)
-        if (n == 0 || n == 1)
-            return 1;
-        
+//    public static long getFactorial(int n) {     //static: chỉ xài 1 lần rồi thôi(tool, đồ chơi công cụ chơi xong ko cần nhớ)
+//        if (n == 0 || n == 1)
+//            return 1;
+//        
+//        if (n < 0 || n >20) 
+//            throw new IllegalArgumentException("Invalid n. n must be between 0=>20");
+//
+//        long product = 1; //tích khởi đầu là 1, sau đó nhân dồn vào
+//        for (int i = 2; i <= n; i++)
+//            product *= i;
+//
+//        return product;
+//    }
+    
+        public static long getFactorial(int n) {     //static: chỉ xài 1 lần rồi thôi(tool, đồ chơi công cụ chơi xong ko cần nhớ)
         if (n < 0 || n >20) 
             throw new IllegalArgumentException("Invalid n. n must be between 0=>20");
+        if (n == 0 || n == 1)
+            return 1;
 
-        long product = 1; //tích khởi đầu là 1, sau đó nhân dồn vào
-        for (int i = 2; i <= n; i++)
-            product *= i;
-
-        return product;
+        return n * getFactorial(n - 1);
     }
 }
